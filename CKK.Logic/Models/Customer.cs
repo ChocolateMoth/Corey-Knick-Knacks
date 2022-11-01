@@ -17,9 +17,30 @@ namespace CKK.Logic.Models
         {
             return _id;
         }
-        public void SetId(int _id) { }
+        public void SetId(int _id)
+        {
 
+        }
 
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public void SetName()
+        {
+
+        }
+
+        public string GetAddress()
+        {
+            return _address;
+        }
+
+        public void SetAddress()
+        {
+
+        }
 
         
            
