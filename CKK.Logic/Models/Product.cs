@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+
+
+
 
 namespace CKK.Logic.Models
 {
@@ -17,9 +17,9 @@ namespace CKK.Logic.Models
         {
             return _id;
         }
-        public void SetId(int Id)
+        public void SetId(int id)
         {
-            _id = Id;
+            _id = id;
         }
 
         public string GetName()
@@ -27,9 +27,9 @@ namespace CKK.Logic.Models
             return _name;
         }
 
-        public void SetName(string Name)
+        public void SetName(string name)
         {
-            _name = Name;
+            _name = name;
         }
 
         public decimal GetPrice()
@@ -37,9 +37,9 @@ namespace CKK.Logic.Models
             return _price;
         }
 
-        public void SetPrice(decimal Price)
+        public void SetPrice(decimal price)
         {
-            _price = Price;
+            _price = price;
 
         }
 
