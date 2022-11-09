@@ -34,7 +34,8 @@ namespace CKK.Logic.Models
         }
         public decimal GetTotal(int quantity, int product_price) //// product was turn into int, here location if having problems later
         {
-            return quantity * product_price;
+            int total = 0;
+            return total = quantity * product_price;
         }
     }
 }

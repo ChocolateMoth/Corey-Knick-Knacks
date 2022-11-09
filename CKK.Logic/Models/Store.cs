@@ -45,7 +45,19 @@ namespace CKK.Logic.Models
         }
         public int GetStoreItem(int productNumber)
         {
-            Product[] available = { _product1, _product2, _product3 };
+            var spot = 0;
+            if()
+
+            return productNumber;
+        }
+        public int FindStoreItemById(int id)
+        {
+            return id;
+        }
+    }
+}
+/*
+  Product[] available = { _product1, _product2, _product3 };
             Array.Sort(available);
             
             if (productNumber <= placeholder)
@@ -57,11 +69,8 @@ namespace CKK.Logic.Models
                 return 0;
 
             }
-            return productNumber;
-        }
-        public int FindStoreItemById(int id)
-        {
-            return id;
-        }
-    }
-}
+ * 
+ * 
+ * 
+ * 
+ * 
