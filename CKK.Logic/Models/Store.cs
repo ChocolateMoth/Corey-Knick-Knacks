@@ -34,8 +34,9 @@ namespace CKK.Logic.Models
         public Product AddStoreItem(Product prod)
         {
             Product[] available = { _product1, _product2, _product3 };
-            
 
+            if (prod <= )
+                ///do i need an array. how to tell what product is next available.
             return prod;
         }
         public int RemoveStoreItem(int productNumber)
