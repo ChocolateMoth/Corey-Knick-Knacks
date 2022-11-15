@@ -31,11 +31,14 @@ namespace CKK.Logic.Models
         {
             _name = name;
         }
-        public Product AddStoreItem(Product prod)
+        public Product AddStoreItem(int amount, Product prod)
         {
+            if (amount > 0)
+            {
+
+            }
             Product[] available = { _product1, _product2, _product3 };
 
-            if (prod <= )
                 ///do i need an array. how to tell what product is next available.
             return prod;
         }
