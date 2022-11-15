@@ -5,41 +5,48 @@ namespace CKK.Logic
 {
     public class ShoppingCart
     {
-        private string _Customer;
-        private Product _product1;
-        private Product _product2;
-        private Product _product3;
+        private Customer _Customer;
+        private ShoppingCartItem _product1;
+        private ShoppingCartItem _product2;
+        private ShoppingCartItem _product3;
 
-        public ShoppingCart(string cust)
+        public ShoppingCart(Customer cust)
         {
             _Customer = cust;
         }
 
-        public int GetCustomerId(int id)
+        public int GetCustomerId()
         {
-            
-            return id;  
+            return _Customer.GetId();  
         }
-
-        public int GetProductById(int id)
+        public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
-            return id.GetProductById();
-        }
-
-        public ShoppingCartItem AddProduct()
-        {
-
-        }
-        public ShoppingCartItem AddProduct()
-        {
-
-        }
-        public ShoppingCartItem RemoveProduct()
-        {
+            if (quantity < 0)
+            {
+                return null;
+            }
+            if(prod == null)
+            {
+                return null;
+            }
+            foreach()
 
         }
 
-        public ShoppingCartItem GetProductById()
+
+        public ShoppingCartItem AddProduct(Product prod)
+        {
+            return prod.GetId();
+        }
+        public ShoppingCartItem RemoveProduct(Product prod, int quantity)
+        {
+            if (quantity > 0)
+            {
+                
+            }
+        }
+
+        public ShoppingCartItem GetProductById(int id)
         {
 
         }
