@@ -52,23 +52,24 @@ If there is an item in spot two, but not spot one or three, then it should put t
 
 
         }
-        public int RemoveStoreItem(int productNumber)
+        public void RemoveStoreItem(int productNumber)
         {
-            if(productNumber == 1)
+            if (productNumber > 0) // to check if there are any items to remove
             {
-                return 0;
-            }
-            else if(productNumber == 2 )
-            {
-                return 0;
-            }
-            else if (productNumber == 3)
-            {
-                return 0;
-            }
-            else
-            {
-                return productNumber;
+                if (productNumber == 1) // the Ids of the pro
+                {
+                    _product1 = null;
+                }
+                else if (productNumber == 2)
+                {
+                    _product2 = null;
+                }
+                else if (productNumber == 3)
+                {
+
+                    _product3 = null;
+                }
+                
             }
             
             /* 
@@ -134,21 +135,3 @@ If there are more than one item with that Id, then it will return the first one
         */
     }
 }
-/*
-  Product[] available = { _product1, _product2, _product3 };
-            Array.Sort(available);
-            
-            if (productNumber <= placeholder)
-            {
-                return 0;
-            }
-            else if (productNumber <= placeholder2)
-            {
-                return 0;
-
-            }
- * 
- * 
- * 
- * 
- */
