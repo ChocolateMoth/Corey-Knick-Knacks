@@ -32,10 +32,10 @@ namespace CKK.Logic.Models
         {
             _product = product;
         }
-        public decimal GetTotal(int quantity, int product_price) //// product was turn into int, here location if having problems later
+        public decimal GetTotal(int quantity, Product product_price) 
         {
-            //int total = 0;
-            return quantity * product_price;
+            
+            return _product.GetPrice() * quantity;
         }
     }
 }
