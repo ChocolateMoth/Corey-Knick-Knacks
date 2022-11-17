@@ -1,7 +1,7 @@
 ﻿
-using CKK.Logic.Models;
 
-namespace CKK.Logic
+
+namespace CKK.Logic.Models
 {
     public class ShoppingCart
     {
@@ -42,11 +42,8 @@ namespace CKK.Logic
 
         }
         ///////////////////////////////////////////////////////////////////////////////////////
-        public ShoppingCartItem AddProduct(Product prod)
-        {
-            return AddProduct(prod, 1);
-        }
-        //////////////////////////////////////////////////////////
+       
+        
         public ShoppingCartItem AddProduct(Product prod, int quantity) //
         {
             
@@ -73,10 +70,42 @@ namespace CKK.Logic
                 return _product3;
                 
             }
+
+
+            if (_product1 == null)
             {
-                return null;
+                _product1 = new ShoppingCartItem(prod, 1);
+                {
+                    return _product1;
+                }
+            }
+            if (_product2 == null)
+            {
+                _product2 = new ShoppingCartItem(prod, 1);
+                {
+                        return _product2;
+                }
             }
 
+            if (_product3 == null)
+            {
+                _product3 = new ShoppingCartItem(prod, 1);
+               {
+                        return _product3;
+               }
+            }
+               else
+                {
+                    return null;
+                } 
+            
+            
+
+        }
+        //////////////////////////////////////////////////////////
+        public ShoppingCartItem AddProduct(Product prod)// move below to see if it would do anything
+        {
+            return AddProduct(prod, 1);
         }
         ///////////////////////////////////////////////////////////////////////////////////////
         public ShoppingCartItem RemoveProduct(Product prod, int quantity)
@@ -85,7 +114,7 @@ namespace CKK.Logic
             //
             //   return _product1;
             //
-            if (_product1.GetQuantity() == 0)
+            if (_product1.GetQuantity() == 0)// should have for each
             {
                 if (_product1 != null && _product1.GetQuantity() > 0)
                 {
@@ -113,14 +142,35 @@ namespace CKK.Logic
         public decimal GetTotal()
         {
             decimal totalone = 0;
-            decimal totaltwo = 0;
-            decimal totalthree = 0;
+            //decimal totaltwo = 0;
+            //decimal totalthree = 0;
 
-            totalone = _product1.GetProduct().GetPrice() * _product1.GetQuantity(); // gets the type of product with price and times it with the amount
-            totaltwo = _product2.GetProduct().GetPrice() * _product2.GetQuantity();
-            totalthree = _product3.GetProduct().GetPrice() * _product3.GetQuantity();
+            //decimal totalone = _product1.GetTotal(); 
+            //decimal totaltwo = _product2.GetTotal();
+            //decimal totalthree = _product3.GetTotal();
 
-            return totalone + totaltwo + totalthree; //add all totals together for GetTotal()
+            //return totalone + totaltwo + totalthree; //add all totals together for GetTotal()
+            if(_product1 == null)
+            {
+                totalone += _product1.GetTotal();
+                return totalone;
+            }
+            if (_product2 == null)
+            {
+                totalone += _product2.GetTotal();
+                return totalone;
+            }
+            if (_product3 == null)
+            {
+                totalone += _product3.GetTotal();
+                return totalone;
+            }
+            else
+            {
+                return 0;
+            }
+
+
         }
         ///////////////////////////////////////////////////////////////////////////////////////
         public ShoppingCartItem GetProduct(int prodNum)
