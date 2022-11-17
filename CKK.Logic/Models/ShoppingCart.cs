@@ -57,12 +57,16 @@ namespace CKK.Logic.Models
 
                 return _product1;
             }
+
+
             if (_product2 != null && _product2.GetProduct().GetId() == prod.GetId())
             {
                 _product2.SetQuantity(_product2.GetQuantity() + quantity);
 
                 return _product2;
             }
+
+
             if (_product3 != null && _product3.GetProduct().GetId() == prod.GetId())
             {
                 _product3.SetQuantity(_product3.GetQuantity() + quantity);
@@ -114,7 +118,7 @@ namespace CKK.Logic.Models
             //
             //   return _product1;
             //
-            if (_product1.GetQuantity() == 0)// should have for each
+            if (quantity == 0)// should have for each
             {
                 if (_product1 != null && _product1.GetQuantity() > 0)
                 {
@@ -131,6 +135,7 @@ namespace CKK.Logic.Models
                     return RemoveProduct(prod, -1);
                 }
             }
+
                 return null;
 
 
@@ -141,16 +146,19 @@ namespace CKK.Logic.Models
         //////////////////////////////////////////////////////////
         public decimal GetTotal()
         {
-            decimal totalone = 0;
+            //decimal totalone = 0;
             //decimal totaltwo = 0;
             //decimal totalthree = 0;
 
-            //decimal totalone = _product1.GetTotal(); 
-            //decimal totaltwo = _product2.GetTotal();
-            //decimal totalthree = _product3.GetTotal();
+            decimal totalone = _product1.GetTotal(); 
+            decimal totaltwo = _product2.GetTotal();
+            decimal totalthree = _product3.GetTotal();
 
-            //return totalone + totaltwo + totalthree; //add all totals together for GetTotal()
-            if(_product1 == null)
+            return totalone + totaltwo + totalthree; //add all totals together for GetTotal()
+           
+            
+            
+            /* if(_product1 == null)
             {
                 totalone += _product1.GetTotal();
                 return totalone;
@@ -169,6 +177,7 @@ namespace CKK.Logic.Models
             {
                 return 0;
             }
+            */
 
 
         }
@@ -197,3 +206,4 @@ namespace CKK.Logic.Models
     }
 
 }
+//// NO ERRORS BUT 2 FAILS ON THE TESTS               YAAAAAAAAAAYYY
