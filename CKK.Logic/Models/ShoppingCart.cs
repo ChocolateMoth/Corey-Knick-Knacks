@@ -51,7 +51,7 @@ namespace CKK.Logic.Models
             {
                 return null;
             }
-            if (_product1 != null && _product1.GetProduct().GetId() == prod.GetId())
+           else if (_product1 != null && _product1.GetProduct().GetId() == prod.GetId())
             {
                 _product1.SetQuantity(_product1.GetQuantity() + quantity);
 
@@ -59,7 +59,7 @@ namespace CKK.Logic.Models
             }
 
 
-            if (_product2 != null && _product2.GetProduct().GetId() == prod.GetId())
+           else if (_product2 != null && _product2.GetProduct().GetId() == prod.GetId())
             {
                 _product2.SetQuantity(_product2.GetQuantity() + quantity);
 
@@ -67,7 +67,7 @@ namespace CKK.Logic.Models
             }
 
 
-            if (_product3 != null && _product3.GetProduct().GetId() == prod.GetId())
+           else if (_product3 != null && _product3.GetProduct().GetId() == prod.GetId())
             {
                 _product3.SetQuantity(_product3.GetQuantity() + quantity);
 
@@ -78,14 +78,14 @@ namespace CKK.Logic.Models
 
             if (_product1 == null)
             {
-                _product1 = new ShoppingCartItem(prod, 1);
+                _product1 = new ShoppingCartItem(prod, quantity); ///all I had to do to fix it was CHANGE THE QUANTITY BECAUSE IT WAS PUT AS 1 ??? man what a great time.
                 {
                     return _product1;
                 }
             }
             if (_product2 == null)
             {
-                _product2 = new ShoppingCartItem(prod, 1);
+                _product2 = new ShoppingCartItem(prod, quantity);
                 {
                         return _product2;
                 }
@@ -93,7 +93,7 @@ namespace CKK.Logic.Models
 
             if (_product3 == null)
             {
-                _product3 = new ShoppingCartItem(prod, 1);
+                _product3 = new ShoppingCartItem(prod, quantity);
                {
                         return _product3;
                }
@@ -102,13 +102,11 @@ namespace CKK.Logic.Models
                 {
                     return null;
                 } 
-            
-            
-
         }
         //////////////////////////////////////////////////////////
         public ShoppingCartItem AddProduct(Product prod)// move below to see if it would do anything
         {
+            
             return AddProduct(prod, 1);
         }
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -207,3 +205,22 @@ namespace CKK.Logic.Models
 
 }
 //// NO ERRORS BUT 2 FAILS ON THE TESTS               YAAAAAAAAAAYYY
+/* 
+              
+namespace CKK.Tests
+{
+    public class ShoppingCartTest
+    {
+        [Fact]
+        public void AddProduct_TestIfAddedCorrectly()
+        {
+            try
+            {
+                Customer cust = new Customer();
+                ShoppingCart shop = new ShoppingCart(cust);
+            }
+
+        }
+    }
+}
+*/
