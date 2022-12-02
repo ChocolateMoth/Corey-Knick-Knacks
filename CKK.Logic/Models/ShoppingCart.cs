@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 
 namespace CKK.Logic.Models
@@ -6,9 +8,10 @@ namespace CKK.Logic.Models
     public class ShoppingCart
     {
         private Customer _Customer;
-        private ShoppingCartItem _product1;
-        private ShoppingCartItem _product2;
-        private ShoppingCartItem _product3;
+        private List<ShoppingCartItem> Products = new List<ShoppingCartItem>();
+        //private ShoppingCartItem _product1;
+        //private ShoppingCartItem _product2;
+        //private ShoppingCartItem _product3;
 
         public ShoppingCart(Customer cust)
         {
@@ -104,7 +107,7 @@ namespace CKK.Logic.Models
                 } 
         }
         //////////////////////////////////////////////////////////
-        public ShoppingCartItem AddProduct(Product prod)// move below to see if it would do anything
+        public List<ShoppingCartItem> AddProduct(Product prod)// move below to see if it would do anything
         {
             
             return AddProduct(prod, 1);

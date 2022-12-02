@@ -1,13 +1,19 @@
-﻿
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+
+
 namespace CKK.Logic.Models
 {
     public class Store
     {
         private int _id;
         private string _name;
-        private Product _product1;
-        private Product _product2;
-        private Product _product3;
+        private List<StoreItem> items = new List<StoreItem>();
+
+        items.Add(Product _product1);
+        //private Product _product2;
+        //private Product _product3;
 
 
         public int GetId()
@@ -26,11 +32,13 @@ namespace CKK.Logic.Models
         {
             _name = name;
         }
+
+
         public Product AddStoreItem(Product prod)
         {
-            if(_product1 == null)
+            if(StoreItem == null)
             {
-                return _product1 = prod;
+                return StoreItem = prod;
             }
             else if (_product2 == null)
             {
@@ -52,7 +60,7 @@ If there is an item in spot two, but not spot one or three, then it should put t
 
 
         }
-        public void RemoveStoreItem(int productNumber)
+        public StoreItem RemoveStoreItem(int id, int quantity)
         {
             if (productNumber > 0) // to check if there are any items to remove
             {
@@ -81,11 +89,11 @@ It should not shift/move items up in the list when things are removed
 
 
         }
-        public Product GetStoreItem(int productNumber)
+        public StoreItem GetStoreItem()
         {
-            if (productNumber == 1)
+            if (StoreItem == 1)
             {
-                return _product1;
+                return StoreItem;
             }
             else if (productNumber == 2)
             {
