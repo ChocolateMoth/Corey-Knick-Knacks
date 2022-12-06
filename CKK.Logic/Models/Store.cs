@@ -9,9 +9,9 @@ namespace CKK.Logic.Models
     {
         private int _id;
         private string _name;
-        private List<StoreItem> items = new List<StoreItem>();
+        private static List<StoreItem> items = new List<StoreItem>();
         
-      
+        
         //items.Add(Product _product1);
         //private Product _product2;
         //private Product _product3;
@@ -37,22 +37,35 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
-            if(quantity < 0)
+            if (quantity <= 0) // if item doesn't exist, it will return null
             {
                 return null;
             }
-            // needs for each? 
-            foreach(StoreItem amount in items)
+
+            else if (quantity > 0)
             {
-                if (amount.SetQuantity(quantity + amount.GetQuantity)) ;
+                foreach (StoreItem amount in items)
+                {
+                    return amount;
+                }
+
             }
+            else
+            {
+                return null;
+            }
+        }
+
+
+                //if (amount.SetQuantity(quantity + amount.GetQuantity)) ;
+            
+
+
 
             /*
             if (quantity > 0)
             {
                 throw new ArgumentOutOfRangeException("already exist");
-
-
             }
             else if(quantity < 0 || prod == null)
             {
@@ -60,23 +73,29 @@ namespace CKK.Logic.Models
             }
             */
 
-
-             
             /*
                 
             */
 
 
-        }
+        
         public static StoreItem RemoveStoreItem(int id, int quantity)
         {
             if (quantity <= 0) // to check if there are any items to remove
             {
+                int b = 0;
                 var returnToZero =
+                    from e in quantity
+                    where e > 0
+                    select e;
+
+                    /*
+                    from e in items
+                    let zeroQuantity = e._quantity * b
+                    select new { zeroQuantity };
                     
-                
-                return quantity = 0;
-                
+                foreach(var tEMMIE in )
+                */
             }
             else
             {
@@ -127,13 +146,45 @@ If there is not an item in the desired spot, it will return null
         
         public StoreItem FindStoreItemById(int id)
         {
-            
-            // is that all ? man that was more difficult because I didn't realize that it would be all if and else if.
-        }
-        /*
-         This will return the product that has the same Id (if there is one)
-If there are no items with that id, then it should return null
-If there are more than one item with that Id, then it will return the first one
-        */
-    }
+            if (_product1.GetId() == id)
+            {
+                return _product1;
+            }
+            else if (_product2.GetId() == id)
+            {
+                return _product2;
+            }
+            else if (_product3.GetId() == id)
+            {
+                return _product3;
+            }
+            else
+            {
+                return null;
+            }
+                /*
+                 This will return the product that has the same Id (if there is one)
+        If there are no items with that id, then it should return null
+        If there are more than one item with that Id, then it will return the first one
+                */
+            }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //   the world revolving 

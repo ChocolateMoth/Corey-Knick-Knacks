@@ -49,7 +49,7 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem AddProduct(Product prod, int quantity) //
         {
-            
+           
          if(quantity < 1)
             {
                 return null;
@@ -113,8 +113,12 @@ namespace CKK.Logic.Models
             return AddProduct(prod, 1);
         }
         ///////////////////////////////////////////////////////////////////////////////////////
-        public ShoppingCartItem RemoveProduct(Product prod, int quantity)
+        public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
+            if (quantity <= 0)
+            {
+                return RemoveProduct(quantity, 0);
+            }
             // (quantity ==0)
             //
             //   return _product1;
