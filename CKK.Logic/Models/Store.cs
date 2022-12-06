@@ -10,12 +10,13 @@ namespace CKK.Logic.Models
         private int _id;
         private string _name;
         private List<StoreItem> items = new List<StoreItem>();
-
-        items.Add(Product _product1);
+        
+      
+        //items.Add(Product _product1);
         //private Product _product2;
         //private Product _product3;
 
-
+        
         public int GetId()
         {
             return _id;
@@ -34,50 +35,52 @@ namespace CKK.Logic.Models
         }
 
 
-        public Product AddStoreItem(Product prod)
+        public StoreItem AddStoreItem(Product prod, int quantity)
         {
-            if(StoreItem == null)
+            if(quantity < 0)
             {
-                return StoreItem = prod;
+                return null;
             }
-            else if (_product2 == null)
+            // needs for each? 
+            foreach(StoreItem amount in items)
             {
-                return _product2 = prod;
+                if (amount.SetQuantity(quantity + amount.GetQuantity)) ;
             }
-            else if (_product3 == null)
+
+            /*
+            if (quantity > 0)
             {
-                return _product3 = prod;
+                throw new ArgumentOutOfRangeException("already exist");
+
+
             }
-            else
+            else if(quantity < 0 || prod == null)
             {
-                return prod;
+
             }
-            /*    
-            Adds a product to the next available product (product1, product2, product3).
-If there is no available product, it will not add a product at all
-If there is an item in spot two, but not spot one or three, then it should put the item in spot 1 (the next available spot) 
+            */
+
+
+             
+            /*
+                
             */
 
 
         }
-        public StoreItem RemoveStoreItem(int id, int quantity)
+        public static StoreItem RemoveStoreItem(int id, int quantity)
         {
-            if (productNumber > 0) // to check if there are any items to remove
+            if (quantity <= 0) // to check if there are any items to remove
             {
-                if (productNumber == 1) // the Ids of the pro
-                {
-                    _product1 = null;
-                }
-                else if (productNumber == 2)
-                {
-                    _product2 = null;
-                }
-                else if (productNumber == 3)
-                {
-
-                    _product3 = null;
-                }
+                var returnToZero =
+                    
                 
+                return quantity = 0;
+                
+            }
+            else
+            {
+                return StoreItem;
             }
             
             /* 
@@ -89,9 +92,13 @@ It should not shift/move items up in the list when things are removed
 
 
         }
-        public StoreItem GetStoreItem()
+        public List<StoreItem> GetStoreItem()
         {
-            if (StoreItem == 1)
+            return items;
+
+        }
+            /*
+             if (StoreItem == 1)
             {
                 return StoreItem;
             }
@@ -107,6 +114,7 @@ It should not shift/move items up in the list when things are removed
             {
                 return null;
             }
+            */
 
 
             /* 
@@ -116,25 +124,11 @@ If it is an invalid productNumber, then it will return null
 If there is not an item in the desired spot, it will return null
             */
 
-        }
-        public Product FindStoreItemById(int id)
+        
+        public StoreItem FindStoreItemById(int id)
         {
-            if (_product1.GetId() == id)
-            {
-                return _product1;
-            }
-            else if (_product2.GetId() == id)
-            {
-                return _product2;
-            }
-            else if (_product3.GetId() == id)
-            {
-                return _product3;
-            }
-            else
-            {
-                return null;
-            }// is that all ? man that was more difficult because I didn't realize that it would be all if and else if.
+            
+            // is that all ? man that was more difficult because I didn't realize that it would be all if and else if.
         }
         /*
          This will return the product that has the same Id (if there is one)
