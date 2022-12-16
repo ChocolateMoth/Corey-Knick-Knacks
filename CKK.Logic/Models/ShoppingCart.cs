@@ -8,7 +8,11 @@ namespace CKK.Logic.Models
     public class ShoppingCart
     {
         private Customer _Customer;
-        private List<ShoppingCartItem> Products = new List<ShoppingCartItem>();
+        private List<ShoppingCartItem> Products { get; set; }
+        public ShoppingCart()
+        {
+            Products = new List<ShoppingCartItem>();
+        }
         //private ShoppingCartItem _product1;
         //private ShoppingCartItem _product2;
         //private ShoppingCartItem _product3;
@@ -49,7 +53,10 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem AddProduct(Product prod, int quantity) //
         {
-           
+         if(quantity> 0)
+            {
+
+            }  
          if(quantity < 1)
             {
                 return null;

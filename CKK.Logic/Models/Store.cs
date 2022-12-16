@@ -5,11 +5,16 @@ using System.Collections.Generic;
 
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store 
     {
         private int _id;
         private string _name;
-        private static List<StoreItem> items = new List<StoreItem>();
+        private static List<StoreItem> items { get; set; }
+       
+        public Store ()
+        {
+            items = new List<StoreItem> ();//constructor to prevent nullpoint..
+        }
         
         
         //items.Add(Product _product1);
@@ -37,6 +42,7 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
+            
             if (quantity <= 0) // if item doesn't exist, it will return null
             {
                 return null;
@@ -44,10 +50,16 @@ namespace CKK.Logic.Models
 
             else if (quantity > 0)
             {
+                if (items)
+            
+                StoreItem items = new( );
+               // if(items.Contains())
+               
                 foreach (StoreItem amount in items)
                 {
-                    return amount;
+                    if(amount == prod)
                 }
+                
 
             }
             else
