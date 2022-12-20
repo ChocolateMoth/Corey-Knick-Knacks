@@ -15,6 +15,10 @@ namespace CKK.Logic.Models
         {
             items = new List<StoreItem>();//constructor to prevent nullpoint..
         }
+        public StoreItem GetStoreItem()
+        {
+            return items;
+        }// I think i need this somehow
 
 
         //items.Add(Product _product1);
@@ -73,116 +77,46 @@ namespace CKK.Logic.Models
         }
 
 
-        //if (amount.SetQuantity(quantity + amount.GetQuantity)) ;
-
-
-
-
-        /*
-        if (quantity > 0)
-        {
-            throw new ArgumentOutOfRangeException("already exist");
-        }
-        else if(quantity < 0 || prod == null)
-        {
-
-        }
-        */
-
-        /*
-
-        */
-
-
-
         public static StoreItem RemoveStoreItem(int id, int quantity)
         {
             if (quantity <= 0) // to check if there are any items to remove
             {
-                int b = 0;
-                var returnToZero =
-                    from e in quantity
-                    where e > 0
-                    select e;
-
-                /*
-                from e in items
-                let zeroQuantity = e._quantity * b
-                select new { zeroQuantity };
-
-            foreach(var tEMMIE in )
-            */
+                foreach (StoreItem item in items)
+                {
+                    item.SetQuantity(0);
+                    return item;
+                }
             }
-            else
+            else if (quantity > 0)
             {
-                return StoreItem;
+                foreach (StoreItem item in items)
+                {
+                    item.SetQuantity(item.GetQuantity() - quantity);
+                    return item;
+                }
             }
-
-            /* 
-              Removes a product from  the desired product
-If there are no products, does nothing
-If product is out of range, does nothing
-It should not shift/move items up in the list when things are removed
-            */
-
-
+            return null;
         }
+           
+        
         public List<StoreItem> GetStoreItem()
         {
             return items;
 
         }
-        /*
-         if (StoreItem == 1)
-        {
-            return StoreItem;
-        }
-        else if (productNumber == 2)
-        {
-            return _product2;
-        }
-        else if (productNumber == 3)
-        {
-            return _product3;
-        }
-        else
-        {
-            return null;
-        }
-        */
-
-
-        /* 
-        This is different from the FindById. This method gets the product by its position (product1, product2, or product3).
-Should return correct product
-If it is an invalid productNumber, then it will return null
-If there is not an item in the desired spot, it will return null
-        */
-
 
         public StoreItem FindStoreItemById(int id)
         {
-            if (_product1.GetId() == id)
+            foreach(StoreItem item in items)
             {
-                return _product1;
+                if (item.GetProduct().GetId() == id)
+                {
+                    return item;
+                }
             }
-            else if (_product2.GetId() == id)
-            {
-                return _product2;
-            }
-            else if (_product3.GetId() == id)
-            {
-                return _product3;
-            }
-            else
-            {
-                return null;
-            }
-            /*
-             This will return the product that has the same Id (if there is one)
-    If there are no items with that id, then it should return null
-    If there are more than one item with that Id, then it will return the first one
-            */
+            return null;
+            
+         
         }
     }
 }
