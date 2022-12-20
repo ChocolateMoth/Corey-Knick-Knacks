@@ -53,11 +53,37 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem AddProduct(Product prod, int quantity) //
         {
-         if(quantity> 0)
+            bool listchecker = false;
+            if (quantity <= 0) // if item doesn't exist, it will return null
             {
+                return null;
+            }
 
-            }  
-         if(quantity < 1)
+            else if (quantity > 0)
+            {
+                foreach (ShoppingCartItem productitem in Products)
+                {
+                    if (productitem.GetProduct() == prod)
+                    {
+                        productitem.SetQuantity(quantity + productitem.GetQuantity());
+                        listchecker = true;
+                        return productitem;
+                    }
+                }
+            }
+            if (listchecker == false)
+            {
+                ShoppingCartItem productitem = new ShoppingCartItem(prod, quantity);
+                Products.Add(productitem);
+                return productitem;
+            }
+            else
+            {
+                return null;
+            }
+            ///
+            /*
+            if (quantity < 1)
             {
                 return null;
             }
@@ -111,7 +137,7 @@ namespace CKK.Logic.Models
                else
                 {
                     return null;
-                } 
+                } */
         }
         //////////////////////////////////////////////////////////
         public List<ShoppingCartItem> AddProduct(Product prod)// move below to see if it would do anything
