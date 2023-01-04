@@ -15,11 +15,12 @@ namespace CKK.Logic.Models
         {
             items = new List<StoreItem>();//constructor to prevent nullpoint..
         }
-        public StoreItem GetStoreItem()
+        /*
+        public StoreItem GetStoreItem(StoreItem items)
         {
             return items;
         }// I think i need this somehow
-
+        */
 
         //items.Add(Product _product1);
         //private Product _product2;
@@ -77,7 +78,7 @@ namespace CKK.Logic.Models
         }
 
 
-        public static StoreItem RemoveStoreItem(int id, int quantity)
+        public StoreItem RemoveStoreItem(int id, int quantity)
         {
             if (quantity <= 0) // to check if there are any items to remove
             {
@@ -99,7 +100,7 @@ namespace CKK.Logic.Models
         }
            
         
-        public List<StoreItem> GetStoreItem()
+        public List<StoreItem> GetStoreItems()
         {
             return items;
 
