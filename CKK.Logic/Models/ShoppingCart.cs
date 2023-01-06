@@ -87,6 +87,7 @@ namespace CKK.Logic.Models
                 foreach (ShoppingCartItem productitem in Products)
                 {
                     productitem.SetQuantity(0);
+                    Products.Remove(productitem);
                     return productitem;
                 }
             }

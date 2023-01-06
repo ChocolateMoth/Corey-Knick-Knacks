@@ -82,7 +82,7 @@ namespace CKK.Logic.Models
         {
             if (quantity <= 0) // to check if there are any items to remove
             {
-                foreach (StoreItem item in items)
+                foreach (var item in items)
                 {
                     item.SetQuantity(0);
                     return item;
@@ -92,6 +92,8 @@ namespace CKK.Logic.Models
             {
                 foreach (StoreItem item in items)
                 {
+
+                    //if(item.GetProduct.GetId() == id)
                     item.SetQuantity(item.GetQuantity() - quantity);
                     return item;
                 }
@@ -113,6 +115,10 @@ namespace CKK.Logic.Models
                 if (item.GetProduct().GetId() == id)
                 {
                     return item;
+                }
+                else
+                {
+                    return null; // returns null 
                 }
             }
             return null;
