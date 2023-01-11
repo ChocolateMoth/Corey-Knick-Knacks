@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-
+//                                                                                                                                                                                                             all your friends abandon you for the slime you are?? well Ive got just the thing you need
 namespace CKK.Logic.Models
 {
     public class ShoppingCart
@@ -30,20 +30,71 @@ namespace CKK.Logic.Models
         ///////////////////////////////////////////////////////
         public ShoppingCartItem GetProductById(int id)
         {
-            foreach(ShoppingCartItem productitem in Products)
+            if (id < 0)
             {
-                if (productitem.GetProduct().GetId() == id)// gets the type of product and the id to see if it equals id
-                {
-                    return productitem;
-                }
-                return null;
-                
+                throw new Exception("error");
             }
-            //if cant get the product id returns nothing
+            var prodid =
+                from product in Products
+                where product.GetProduct().GetId() == id
+                select product;
+            foreach (var item in prodid)
+            {
+                if (Products == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return item;
+                }
+            }
             return null;
         }
+
+
+
+            /*
+                foreach (ShoppingCartItem productitem in Products)
+                {
+                    if (productitem.GetProduct().GetId() == id)// gets the type of product and the id to see if it equals id
+                    {
+                        return productitem;
+                    }
+                    return null;
+
+                }
+
+            }//if cant get the product id returns nothing
+            return null;
+        }*/
+        /*
+         public StoreItem FindStoreItemById(int id)
+        {
+            if(id < 0)
+            {
+                throw new Exception("id is less than 0 which cannot happen. error");
+            }
+            var itemid = // linq to find where item is.
+                from item in items
+                where item.GetProduct().GetId() ==id
+                select item;
+            foreach(var item in itemid)
+            {
+                if (item ==null)
+                {
+                    return null; // if item is == to null make it null.
+
+                }
+                else
+                {
+                    return item;
+                }
+            }
+            return null; // all paths return 
+        */
         ///////////////////////////////////////////////////////////////////////////////////////
-       
+       // a lot of stuff is in green because its probalby a failed attempt . I tend to keep things than get rid of them. who knows doing it this way may be faster if I need to copy paste something again.
         
         public ShoppingCartItem AddProduct(Product prod, int quantity) //
         {
@@ -87,7 +138,7 @@ namespace CKK.Logic.Models
                 foreach (ShoppingCartItem productitem in Products)
                 {
                     productitem.SetQuantity(0);
-                    Products.Remove(productitem);
+                    //Products.Remove(productitem);
                     return productitem;
                 }
             }

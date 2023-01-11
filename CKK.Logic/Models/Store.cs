@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-
+using System.Linq.Expressions;
 
 namespace CKK.Logic.Models
 {
@@ -47,12 +47,31 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)// now returns all 
         {
-            bool listchecker = false;
+
+            //bool listchecker = false;
+            if (prod == null || quantity < 0)
+            {
+                return null;
+            }
+            foreach (var item in items)
+            {
+                if (item.GetProduct() == prod)
+                {
+                    item.SetQuantity(item.GetQuantity() + quantity);
+                    return item;
+                }
+            }
+            StoreItem addedItem = new StoreItem(prod, quantity);
+            items.Add(addedItem);
+            return addedItem;
+        }  
+
+            /*
             if (quantity <= 0) // if item doesn't exist, it will return null
             {
                 return null;
             }
-
+            var CheckForItem = FindStoreItemById(prod.GetId);
             else if (quantity > 0)
             {
                 foreach (StoreItem item in items)
@@ -77,27 +96,49 @@ namespace CKK.Logic.Models
             }
         }
 
-
+            */
         public StoreItem RemoveStoreItem(int id, int quantity)
         {
             if (quantity <= 0) // to check if there are any items to remove
             {
-                foreach (var item in items)
-                {
-                    item.SetQuantity(0);
-                    return item;
-                }
+                throw new Exception("error");
             }
-            else if (quantity > 0)
+            var notitem =
+                from item in items
+                where item.GetProduct().GetId() == id
+                let getrid = item.GetQuantity() - quantity
+                select new { item, getrid };
+            if (notitem.First().getrid <= 0)
             {
-                foreach (StoreItem item in items)
+                noitem.First().item.SetQuantity(0);
+                return noitem.First().item;
+
+            }
+            foreach (var item notitem)
+            {
+                if (item.getrid > 0)
                 {
 
-                    //if(item.GetProduct.GetId() == id)
-                    item.SetQuantity(item.GetQuantity() - quantity);
-                    return item;
                 }
             }
+            /*
+       foreach (var item in items)
+       {
+           item.SetQuantity(0);
+           return item;
+       }
+   }
+   else if (quantity > 0)
+   {
+       foreach (StoreItem item in items)
+       {
+
+           //if(item.GetProduct.GetId() == id)
+           item.SetQuantity(item.GetQuantity() - quantity);
+           return item;
+       }
+   }
+       */
             return null;
         }
            
@@ -110,6 +151,28 @@ namespace CKK.Logic.Models
 
         public StoreItem FindStoreItemById(int id)
         {
+            if(id < 0)
+            {
+                throw new Exception("id is less than 0 which cannot happen. error");
+            }
+            var itemid = // linq to find where item is.
+                from item in items
+                where item.GetProduct().GetId() ==id
+                select item;
+            foreach(var item in itemid)
+            {
+                if (item ==null)
+                {
+                    return null; // if item is == to null make it null.
+
+                }
+                else
+                {
+                    return item;
+                }
+            }
+            return null; // all paths return 
+            /*
             foreach(StoreItem item in items)
             {
                 if (item.GetProduct().GetId() == id)
@@ -122,7 +185,7 @@ namespace CKK.Logic.Models
                 }
             }
             return null;
-            
+            */
          
         }
     }
