@@ -9,12 +9,17 @@ namespace CKK.Logic.Models
     {
         private int _id;
         private string _name;
+        List<StoreItem> items = new List<StoreItem>();
+        /*
         private static List<StoreItem> items { get; set; }
 
         public Store()
         {
             items = new List<StoreItem>();//constructor to prevent nullpoint..
         }
+
+
+        */
         /*
         public StoreItem GetStoreItem(StoreItem items)
         {
@@ -110,17 +115,26 @@ namespace CKK.Logic.Models
                 select new { item, getrid };
             if (notitem.First().getrid <= 0)
             {
-                noitem.First().item.SetQuantity(0);
-                return noitem.First().item;
+                notitem.First().item.SetQuantity(0);
+                return notitem.First().item;
 
             }
-            foreach (var item notitem)
+            foreach (var item in notitem)
             {
                 if (item.getrid > 0)
                 {
+                    item.item.SetQuantity(item.getrid);
+                    return item.item; 
+                }
+                else
+                {
+                    item.item.SetQuantity(0);
+                    items.Add(new StoreItem(item.item.GetProduct(), 0));
 
+                    return item.item;
                 }
             }
+            return null;
             /*
        foreach (var item in items)
        {
@@ -139,7 +153,7 @@ namespace CKK.Logic.Models
        }
    }
        */
-            return null;
+            
         }
            
         
