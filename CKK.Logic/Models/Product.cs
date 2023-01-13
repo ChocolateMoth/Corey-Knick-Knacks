@@ -4,9 +4,11 @@
 
 
 
+using CKK.Logic.CKK.Logic.Interfaces;
+
 namespace CKK.Logic.Models
 {
-   public class Product
+   public class Product : Entity
     {
         private int _id;
         private string _name;

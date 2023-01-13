@@ -2,13 +2,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
-
-
+using CKK.Logic.CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
-    public class Customer
+    public class Customer :Entity
     {
         private int _id;
         private string _name;

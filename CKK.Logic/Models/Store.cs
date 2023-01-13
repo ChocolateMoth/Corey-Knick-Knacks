@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using CKK.Logic.CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store: Entity
     {
         private int _id;
         private string _name;
